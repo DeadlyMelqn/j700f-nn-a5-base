@@ -247,6 +247,15 @@ HOSTCXX      = g++
 HOSTCFLAGS   = $(GRAPHITE) -Wall -Wmissing-prototypes -Wstrict-prototypes -O2 -fomit-frame-pointer
 HOSTCXXFLAGS = $(GRAPHITE) -O2
 
+KBUILD_CFLAGS += $(call cc-disable-warning,frame-address,)
+KBUILD_CFLAGS += $(call cc-disable-warning, format-truncation)
+KBUILD_CFLAGS += $(call cc-disable-warning, format-overflow)
+KBUILD_CFLAGS += $(call cc-disable-warning, int-in-bool-context)
+KBUILD_CFLAGS += $(call cc-option,-fno-PIE)
+KBUILD_AFLAGS += $(call cc-option,-fno-PIE)
+KBUILD_CFLAGS += $(call cc-disable-warning,array-bounds,)
+KBUILD_CFLAGS += $(call cc-disable-warning,unused-const-variable,)
+
 # Decide whether to build built-in, modular, or both.
 # Normally, just do built-in.
 
